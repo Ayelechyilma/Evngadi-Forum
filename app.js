@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const port = 5500;
 const cors = require("cors");
-app.use(cors());
+app.use(cors({ origin: true }));
 const dbconnection = require("./db/dbConfig");
 //user routes middleware file
 const userRoutes = require("./Routes/userRoutes");
@@ -15,6 +15,11 @@ app.use(express.json()); // any request pass througn this JSON middleware
 // const public = "client/dist";
 
 // app.use(express.static(public));
+app.get("/", (req, res) => {
+	res.status(200).json({
+		message: "Success !",
+	});
+});
 
 app.use("/api/users", userRoutes); //user route middleware
 app.use("/api/question", askqueastionroutes); //question route middleware
