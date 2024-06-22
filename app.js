@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const port = 5500;
 const cors = require("cors");
-// app.use(cors({ origin: true }));
+app.use(cors({ origin: true }));
 const dbconnection = require("./db/dbConfig");
 //user routes middleware file
 const userRoutes = require("./Routes/userRoutes");
